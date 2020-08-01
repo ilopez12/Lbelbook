@@ -1,0 +1,72 @@
+{{> head }}
+<body>
+    
+    {{> header }}
+        
+    <div class="main-cat">
+  <!--  <div class="categorias">-->
+        <div class="main-container"><!--INSERAR IMAGENES DE LA BASE DE DATOS-->
+            <div class="mc-1">    
+            </div>
+            <div class="mc-2">
+              <img class= "nuevo" src="/public/img/icons/romance.png" alt="">
+                <form class="form-horizontal" method="post" action="/logins">
+                  <input type="hidden" id="login" class="fadeIn second" name="romance">
+                  <input type="submit" class="fadeIn fourth" value="Romance">
+                </form>   
+            </div>
+
+            <div class="mc-3">
+              <img class= "nuevo"  src="/public/img/icons/cficcion.png" alt="">
+                <form class="form-horizontal" method="post" action="/logins">
+                   <input type="hidden" id="login" class="fadeIn second" name="cficion">
+                   <input type="submit" class="fadeIn fourth" value="Log In">
+                 </form> 
+            </div>
+
+            <div class="mc-4">
+               <img class= "nuevo" src="/public/img/icons/drama.png" alt="">
+                <form class="form-horizontal" method="post" action="/logins">
+                   <input type="hidden" id="login" class="fadeIn second" name="drama">
+                   <input type="submit" class="fadeIn fourth" value="Log In">
+                 </form> 
+                   
+            </div>
+
+            <div class="mc-2">
+               <img class= "nuevo" src="/public/img/icons/biografia.png" alt="">
+               <form class="form-horizontal" method="post" action="/logins">
+                   <input type="hidden" id="login" class="fadeIn second" name="bio">
+                   <input type="submit" class="fadeIn fourth" value="Log In">
+                 </form> 
+   
+            </div>
+            <div class="mc-3">
+                <img class= "nuevo"  src="/public/img/icons/negocios.png" alt="">
+                <form class="form-horizontal" method="post" action="/logins">
+                   <input type="hidden" id="login" class="fadeIn second" name="negocios">
+                   <input type="submit" class="fadeIn fourth" value="Log In">
+                 </form>     
+            </div>
+            <div class="mc-4">
+                <img class= "nuevo" src="/public/img/icons/Suspenso.png" alt="">
+                <form class="form-horizontal" method="post" action="/logins">
+                   <input type="hidden" id="login" class="fadeIn second" name="suspenso">
+                   <input type="submit" class="fadeIn fourth" value="Log In">
+                 </form> 
+            </div>
+            <div class="mc-5"></div>
+            </div>
+
+        <!--<div class="cat1"><a href=""> Romance</a></div>
+        <div class="cat2"><a href="">Ciencia Ficcion</a></div>
+        <div class="cat3"><a href="">Biografias</a></div>
+        <div class="cat4"><a href="">Suspenso</a></div>
+        <div class="cat5"><a href="">Drama</a></div>
+        <div class="cat6"><a href="">Auto Ayuda</a></div>
+        <div class="cat7"><a href="">Negocios</a></div>
+        <div class="cat8"><a href="">Progrmación</a></div>
+
+    </div>-->
+    </div>
+{{> footer }}

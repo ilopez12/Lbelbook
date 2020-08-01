@@ -1,0 +1,93 @@
+<!--FALTA EDITORIALES-->
+        <footer>
+            <div class="foot">
+                <!-- Footer -->
+<footer class="page-footer font-small blue">
+
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-3">© 2020 Copyright:
+    <a href="#">LbelBooks.com</a>
+  </div>
+  <!-- Copyright -->
+
+</footer>
+<!-- Footer -->
+<!--FALTA FOOTER-->
+            </div>
+        </footer>
+     
+    </body>
+
+<script type="text/javascript">
+    var timer = 4000;
+var i = 0;
+var max = $('#c > li').length;
+ 
+	$("#c > li").eq(i).addClass('active').css('left','0');
+	$("#c > li").eq(i + 1).addClass('active').css('left','25%');
+	$("#c > li").eq(i + 2).addClass('active').css('left','50%');
+	$("#c > li").eq(i + 3).addClass('active').css('left','75%');
+ 
+	setInterval(function(){ 
+		$("#c > li").removeClass('active');
+		$("#c > li").eq(i).css('transition-delay','0.25s');
+		$("#c > li").eq(i + 1).css('transition-delay','0.5s');
+		$("#c > li").eq(i + 2).css('transition-delay','0.75s');
+		$("#c > li").eq(i + 3).css('transition-delay','1s');
+		if (i < max-4) {
+			i = i+4; 
+		}
+		else { 
+			i = 0; 
+		}  
+		$("#c > li").eq(i).css('left','0').addClass('active').css('transition-delay','1.25s');
+		$("#c > li").eq(i + 1).css('left','25%').addClass('active').css('transition-delay','1.5s');
+		$("#c > li").eq(i + 2).css('left','50%').addClass('active').css('transition-delay','1.75s');
+		$("#c > li").eq(i + 3).css('left','75%').addClass('active').css('transition-delay','2s');
+	
+	}, timer);
+ 
+</script>
+
+<script language="javascript">
+$('#myCarousel').on('slide.bs.carousel', function (e) {
+  
+    var $e = $(e.relatedTarget);
+    var idx = $e.index();
+    var itemsPerSlide = 4;
+    var totalItems = $('.carousel-item').length;
+    
+    if (idx >= totalItems-(itemsPerSlide-1)) {
+        var it = itemsPerSlide - (totalItems - idx);
+        for (var i=0; i<it; i++) {
+            // append slides to end
+            if (e.direction=="left") {
+                $('.carousel-item').eq(i).appendTo('.carousel-inner');
+            }
+            else {
+                $('.carousel-item').eq(0).appendTo('.carousel-inner');
+            }
+        }
+    }
+});
+  $('#myCarousel').carousel({ 
+                interval: 2000
+        });
+  $(document).ready(function() {
+/* show lightbox when clicking a thumbnail */
+    $('a.thumb').click(function(event){
+      event.preventDefault();
+      var content = $('.modal-body');
+      content.empty();
+        var title = $(this).attr("title");
+        $('.modal-title').html(title);        
+        content.html($(this).html());
+        $(".modal-profile").modal({show:true});
+    });
+  });
+  </script>
+
+    <script type="text/javascript">
+        $('.carousel').carousel()
+    </script>
+</html>
