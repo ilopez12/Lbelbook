@@ -1,50 +1,23 @@
-const mongoose = require('mongoose');
-const uniqueValidator = require('mongoose-unique-validator')
-const Schema = mongoose.Schema;
-  //
-//DATOS DE LOS LIBROS
-const ProductoSchema = new Schema({
-    nombre: {
-        type: String,
-        require: [true, 'El nombre es Necesario'],
-    },
-    codigo: {
-        type: Number,
-        required: true,
+'use strict'
 
-    },
-    precio: {
-        type: Number,
-        require: [true, 'El Precio es Necesario']
-    },
-    cantidad: {
-        type: Number,
-        require: [true, 'la cantidad es Necesaria']
-    },
-    descripcion: {
-        type: String,
-        required: [true, 'La descripcion es Necesaria']
+const mongoose = require('mongoose')
+const Schema = mongoose.Schema
 
-    },
-    img:  {
-        type: String,
-        require: false
-
-    } ,
-    estado: {
-        type: Boolean,
-        default: true
-    },
-    id_categoria: {
-        type: String
-    },
-
-    categoria: {
-        type: String
-    }
+const LibroSchema = Schema({
     
-});
+    estado: {type: Boolean, default: true},
+    nombre: {type: String,require: true},
+    autor:{type: String,require: true},
+    codigo: {type: Number,require: true },
+    precio: {type: Number, require: true},
+    cantidad: {type: Number, require: true},
+    descripcion:{type: String,require: true},
+    img:{type: String, require: false},
+    categoria:{type: String, require: true},
+    id_categoria: { type: Schema.Types.ObjectId, ref: 'Categoria'},
+    dateAdded: { type: Date, default: Date.now()},
+    dateUpdate: { type: Date}
+    
+})
 
-
-//ProductoSchema.plugin(uniqueValidator, { message: '{PATH} Debe de ser Unico' });
-module.exports = mongoose.model('libro', ProductoSchema);
+module.exports = mongoose.model('Libro', LibroSchema)

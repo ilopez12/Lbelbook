@@ -8,12 +8,8 @@ var dat= new Date();
 var dat2 = Date.parse(dat);
 
 app.post('/logins', (req, res) => {
-
     var data = req.body;
-    // res.json({
-    //     data
 
-    // });
     if (data.pass_l == null || data.user_log == null) {
 
         res.json({
@@ -53,7 +49,6 @@ app.post('/logins', (req, res) => {
                             //generar el jwt
                            let token = jwt.sign({
                                usuario: usuarioDB
-
                            }, 'secret', {expiresIn: process.env.CADUCIDAD_TOKEN} );
                            res.json({
                                 exito: true,

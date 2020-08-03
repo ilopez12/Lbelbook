@@ -48,7 +48,7 @@ app.put('/usuario/:id',verificadorToken, (req, res) => {
     if (err) {
         res.json({
             exito: false,
-            err
+            err 
         });
     }
 

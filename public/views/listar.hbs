@@ -1,0 +1,22 @@
+{{> head }}
+<body>
+
+    {{> header }}
+ {{#each data}}
+ 
+
+<div class="resultado">
+  
+    <h3>{{this.nombre}}</h3><!--NOMBRE-->
+ 
+    <form class="form-horizontal" method="get" action="/carrito/add/">
+    <h3>{{.}}</h3><!--NOMBRE-->
+    <input type="text">
+       <input type="hidden" id="categoria" class="fadeIn second" name="categoria" value="add">
+       <input type="submit" class="fadeIn fourth" value="Añadir a Carrito">
+    </form>  
+
+
+</div>
+ {{/each}}
+    {{> footer }}

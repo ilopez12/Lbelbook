@@ -4,6 +4,7 @@ const body_parse = require('body-parser');
 var hbs = require('express-hbs');
 const mongoose = require('mongoose');
 const connectDb = require('./dbConfig');
+const formData = require('express-form-data');
 
 const app = express(); 
 const PORT = 3000;
@@ -11,18 +12,21 @@ const PORT = 3000;
 var path = require('path');
 //Routes 
 var routes = require('./Routes/index');
-var routes = require('./Routes/categorias');
+
+app.use(formData.parse())
 
 app.use(body_parse.urlencoded({ extended: false }));
 app.use(body_parse.json({ limit: '50mb' }));
 
 app.use('/public', express.static(path.join(__dirname, './public')));
 
+
+
 app.engine('hbs', hbs.express4({
    partialsDir: __dirname + '/public/views/partials'
  }));
  
-app.set('view engine', 'hbs');
+app.set('view engine', 'hbs'); 
 app.set('views', __dirname + '/public/');
 
 app.use(require('./Routes/index'));
