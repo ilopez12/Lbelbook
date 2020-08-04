@@ -5,7 +5,7 @@ const Schema = mongoose.Schema
 
 const ResenaSchema = Schema({
     
-    id_libro: { type: String, require: true},
+    id_libro: { type: Schema.Types.ObjectId, ref: 'Libro'},
     autor: {type: String, default: true},
     resena: {type: String,require: true},
     imagen: {type: String,require: true },
@@ -14,4 +14,4 @@ const ResenaSchema = Schema({
     
 })
 
-module.exports = mongoose.model('Resena', ResenaSchema)
+module.exports = mongoose.model('Resena', ResenaSchema) 

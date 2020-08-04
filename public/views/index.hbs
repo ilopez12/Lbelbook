@@ -1,63 +1,85 @@
 {{> head }}
 <body>
 
-    {{> header }}
-    <div class="slider"><!--INSERAR IMAGENES DE LA BASE DE DATOS-->
+{{> header }}
+  <div class="slider"><!--INSERAR IMAGENES DE LA BASE DE DATOS-->
     <ul class="slide">
         <li>
-<img src="/public/img/portada/l1.jpg" alt="">
-</li>
+        <img src="/public/img/portada/1.jpeg" alt="">
+        </li>
         <li>
-<img src="/public/img/portada/l3.jpg" alt="">
-</li>
+        <img src="/public/img/portada/2.jpeg" alt="">
+        </li>
         <li>
-<img src="/public/img/portada/l4.jpg" alt="">
-</li>
-        <li>
-<img src="/public/img/portada/Invertia_361228333_145158391_1024x576.jpg" alt="">
-</li>
+        <img src="/public/img/portada/3.jpeg" alt="">
+        </li>
+        
     </ul>
 </div>
+  <div class="img-sep" style="height: 100px; ">
+              <div  style="background-color: #d4b5b0; opacity: 0.5; height: 100px;"></div>
+            </div>
         <div class="container-main">
             <div class="head-main">
                 <div class="head1 back">
-                    <h1>Lo Más Nuevo</h1>
+                    <h1>Date una vuelta</h1>
                 </div>
                 
                 <div class="head2">
-                    <h2>Lo Más Nuevo</h2>
+                    <h2>Date una vuelta</h2>
                 </div>
                 
             </div>
+<div class="resultado">
+     <div class="row">
             <div class="main-container"><!--INSERAR IMAGENES DE LA BASE DE DATOS-->
                 <div class="mc-1">    
                 </div>
-                <div class="mc-2"><img class= "nuevo" src="/public/img/portada/medianoche.jpg" alt="">
+
+                <div class="mc-2 card "><img class= "card-img-top nuevo" src="/public/img/portada/medianoche.jpg" alt="">
                     <div class="name boton2"><h5>MEDIANOCHE</h5><H6>CLAUDIA GRAY</H6></div>
                        
                 </div>
-                <div class="mc-3"><img class= "nuevo"  src="/public/img/portada/psicoanalista.jpg" alt="">
+                <div class="mc-3 card "><img class= " card-img-top nuevo"  src="/public/img/portada/psicoanalista.jpg" alt="">
                     <div class="name boton2"><h5>EL PSICOANALISTA</h5><H6>JHON KATZENBACH</H6></div>
                 </div>
-                <div class="mc-4"><img class= "nuevo" src="/public/img/portada/oyemorena.jpg" alt="">
+                <div class="mc-4 card "><img class= "card-img-top nuevo" src="/public/img/portada/oyemorena.jpg" alt="">
                     <div class="name boton2"><h5>OYE MORENA, TU QUE MIRAS</h5><H6>MEGAN MAXWELL</H6></div>
                 </div>
+               
                 <div class="mc-5"></div>
             </div>
 
 
             <div class="resena"><!--TRAER DE BD-->
-                <h2>Reseña del Mes</h2>
+                 <div class="head-main">
+                <div class="head1 back">
+                    <h1>Reseña del Mes</h1>
+                </div>
+                
+                <div class="head2">
+                    <h2>Reseña de Mes</h2>
+                </div>
+                
+            </div>
+                    {{#each resenas}}         
                 <div class="cont-res">
                     <div class="res1">
-                        <img class= "nuevo" src="/public/img/portada/oyemorena.jpg" alt="">
+                        <img class= "nuevo nuevogen2" src="{{this.imagen}}" alt="">
                     </div>
                     <div class="res2">
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae commodi perferendis repudiandae omnis assumenda et quo sapiente, corporis porro minus voluptate cupiditate quaerat pariatur aspernatur deleniti nesciunt qui tempora ducimus?</p>
+                        <p>{{this.resena}}</p>
                     </div>
                 </div>
-            </div>
 
+                {{/each}}
+            </div>
+             </div>
+  </div><!--CIERRA PRIMER CONTAINER-->          
+            <div class="img-sep" style="background-image: url(/public/img/portada/P1.jpg); height: 100px; background-repeat: cover;">
+              <div  style="background-color: #d4b5b0; opacity: 0.5; height: 100px;"></div>
+            </div>
+<div class="resultado">
             <div class="servicios">
                 <div class="cont-serv">
                     <div class="serv1">
@@ -85,7 +107,7 @@
                <div class="panel panel-default">
                   <div class="panel-thumbnail">
                     <a href="#" title="image 1" class="thumb">
-                      <img class="img-fluid mx-auto d-block" src="//via.placeholder.com/200x200?text=1" alt="slide 1">
+                      <img class="img-fluid mx-auto d-block" src="/public/img/editoriales/esencia.png" alt="slide 1">
                     </a>
                   </div>
                 </div>
@@ -94,7 +116,7 @@
                <div class="panel panel-default">
                   <div class="panel-thumbnail">
                     <a href="#" title="image 3" class="thumb">
-                     <img class="img-fluid mx-auto d-block" src="//via.placeholder.com/200x200?text=2" alt="slide 2">
+                     <img class="img-fluid mx-auto d-block" src="/public/img/editoriales/montena.jpg" alt="slide 2">
                     </a>
                   </div>
                 </div>
@@ -103,7 +125,7 @@
                <div class="panel panel-default">
                   <div class="panel-thumbnail">
                     <a href="#" title="image 4" class="thumb">
-                     <img class="img-fluid mx-auto d-block" src="//via.placeholder.com/200x200?text=3" alt="slide 3">
+                     <img class="img-fluid mx-auto d-block" src="/public/img/editoriales/planetaedit.jpg" alt="slide 3">
                     </a>
                   </div>
                 </div>
@@ -112,7 +134,7 @@
                 <div class="panel panel-default">
                   <div class="panel-thumbnail">
                     <a href="#" title="image 5" class="thumb">
-                     <img class="img-fluid mx-auto d-block" src="//via.placeholder.com/200x200?text=4" alt="slide 4">
+                     <img class="img-fluid mx-auto d-block" src="/public/img/editoriales/rocaedit.png" alt="slide 4">
                     </a>
                   </div>
                 </div>
@@ -121,7 +143,7 @@
               <div class="panel panel-default">
                   <div class="panel-thumbnail">
                     <a href="#" title="image 6" class="thumb">
-                      <img class="img-fluid mx-auto d-block" src="//via.placeholder.com/200x200?text=5" alt="slide 5">
+                      <img class="img-fluid mx-auto d-block" src="/public/img/editoriales/salamandra.png" alt="slide 5">
                     </a>
                   </div>
                 </div>
@@ -130,7 +152,7 @@
                <div class="panel panel-default">
                   <div class="panel-thumbnail">
                     <a href="#" title="image 7" class="thumb">
-                      <img class="img-fluid mx-auto d-block" src="//via.placeholder.com/200x200?text=6" alt="slide 6">
+                      <img class="img-fluid mx-auto d-block" src="/public/img/editoriales/sumadeletras.png" alt="slide 6">
                     </a>
                   </div>
                 </div>
@@ -139,7 +161,7 @@
                <div class="panel panel-default">
                   <div class="panel-thumbnail">
                     <a href="#" title="image 8" class="thumb">
-                      <img class="img-fluid mx-auto d-block" src="//via.placeholder.com/200x200?text=7" alt="slide 7">
+                      <img class="img-fluid mx-auto d-block" src="/public/img/editoriales/alfaguara.jpeg" alt="slide 7">
                     </a>
                   </div>
                 </div>
@@ -148,7 +170,7 @@
                 <div class="panel panel-default">
                   <div class="panel-thumbnail">
                     <a href="#" title="image 2" class="thumb">
-                     <img class="img-fluid mx-auto d-block" src="//via.placeholder.com/200x200?text=8" alt="slide 8">
+                     <img class="img-fluid mx-auto d-block" src="/public/img/editoriales/anagrana.jpg" alt="slide 8">
                     </a>
                   </div>
                   
@@ -158,7 +180,7 @@
                 <div class="panel panel-default">
                   <div class="panel-thumbnail">
                     <a href="#" title="image 2" class="thumb">
-                     <img class="img-fluid mx-auto d-block" src="//via.placeholder.com/200x200?text=8" alt="slide 9">
+                     <img class="img-fluid mx-auto d-block" src="/public/img/editoriales/baltica.png" alt="slide 9">
                     </a>
                   </div>
                   

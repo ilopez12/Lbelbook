@@ -16,7 +16,8 @@ app.post('/carrito/add', (req, res) => {
             autor_libro: datos.autor_libro,
             codigo_libro: datos.codigo_libro,
             precio_libro: datos.precio_libro, 
-            cantidad_libro: datos.cantidad_libro,
+            cantidad_libro: 1,
+            total : datos.precio_libro,
             img_libro : datos.img_libro
 
         });
@@ -28,16 +29,11 @@ app.post('/carrito/add', (req, res) => {
                     err
                 });
             }else{
-    
-                carritodb.pass = null;
-                res.json({
-                    exito: true,
-                    Carrito: carritodb
-                   
-                });
-                //res.render('../public/views/index.hbs', { title: 'LEBLBOOK ' });
-                console.log(Carrito);
-    
+ 
+                res.render('../public/views/categorias.hbs', { 
+                    title: 'Categoria'
+                  });
+
             }
     
         });
@@ -71,6 +67,32 @@ app.delete('/carrito/delete/', (req, res) => {
         });
     });  
     
+app.delete('/carrito/delete/:id', (req, res) => {
+    var id_productos = req.params.id
+    Carritos.findByIdAndDelete(id_productos, (err, CarritoDB) => {
+        if (err) {
+            res.status(400).json({
+                exito: false,
+                err
+
+            });
+        }
+        if (CarritoDB == null) {
+            res.status(400).json({
+                exito: false,
+                err: {
+                    message: `El producto con ID ${id_productos} no EXISTE`
+                }
+            })
+        }
+        res.json({
+            exito: true,
+            producto: CarritoDB
+        });
+    });
+
+});  
+
 app.get('/carrito/All', (req, res) => {
 
         console.log( 'ENTRO AQUI');
@@ -83,17 +105,64 @@ app.get('/carrito/All', (req, res) => {
                     err
                 });
             }else{
-    
+     
                 res.json({
                     exito: true,
                     Carritos
-                });
+                }); 
             }
             console.log(Carritos);
         });
             
     
     });
-        
+ 
+app.get('/carrito/All/add', function (req, res, next) {
+        console.log('carrito');
+        var id = req.params.id;
+        console.log( 'ENTRO AQUI');
+      Carritos.find(function(err, docs){
+        console.log('nuevo');
+        var total = Carritos.total ;
+        var productChunks = [];
+        var ChunkSize = 3; 
+        for (var i = 0; i < docs.length; i += ChunkSize){
+            productChunks.push(docs.slice(i, i+ChunkSize));
+            
+         //   console.log(total);
+        }
 
+        res.render('../public/views/pago.hbs', { 
+            title: 'Pago', 
+            producto: docs,
+            tamano : docs.length, 
+            suma : 4,
+            estatus: req.cookies.auth 
+          });
+    }).lean()
+//console.log($sum);
+    });
+
+// actualizar un Producto
+app.put('/carrito/refresh/:id', [verificadorToken], (req, res) => {
+    //underscore pick solo coloca los campos que se quieren actualizar en la base de datos
+    var data = _.pick(req.body, ['nombre', 'precio', 'cantidad', 'descripcion','estado' ,'id_categoria' , 'id_auto']);
+    var id_producto = req.params.id
+    productos.findByIdAndUpdate(id_producto, data, { new: true, runValidators: true, context: 'query' }, (err, productoBD) => {
+        if (err) {
+            res.status(400).json({
+                exito: false,
+                err: {
+                    message: `No se encontro registro con el Id ${id_producto}`
+                }
+            });
+        }
+
+        res.json({
+            exito: true,
+            producto: productoBD
+        });
+
+    });
+});
 module.exports = app;

@@ -30,8 +30,8 @@ const CarritoSchema = new Schema({
         //required: [true, 'La descripcion es Necesaria']
 
     },
-    img_libro:  {
-        type: String,
+   img_libro:  {
+        type: String, 
     //    require: false
  
     } ,

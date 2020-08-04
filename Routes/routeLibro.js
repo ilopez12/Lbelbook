@@ -45,13 +45,7 @@ var data= req.body;
 });
 
 app.get('/libros/', (req, res) => {
-    //id de la categoria
-   
-    //var id_categoria = req.body;
-  //  console.log(id_categoria.categoria);
-   // var id_categoria = req.params.categoria;
 
- //  libros.find({ categoria: id_categoria.categoria}, (err, librodb) => {
     console.log( 'ENTRO AQUI');
   libros.find({})
     .exec((err, libros) => {
@@ -66,7 +60,7 @@ app.get('/libros/', (req, res) => {
             res.json({
                 exito: true,
                 libros,
-
+                estatus: req.cookies.auth 
 
             });
         }
@@ -77,59 +71,22 @@ app.get('/libros/', (req, res) => {
 
 });
 
-app.get('/libros/categoria/:id', async (req, res)=>{
+app.get('/libros/categoria/:id', function (req, res, next) {
     var id = req.params.id;
-   // const cartList = await cartListAsync({userLogin: req.user}).then((data)=>data)
-    const dataLoaded = await libros.find({categoria: id})
-    .exec((err, librosdb) => {
-        if (err) {
-            res.status(400).json({
-                exito: false,
-                err: {
-                    message: 'No existe categoria' 
-                }
-            });
+    libros.find({id_categoria :id}, function(err, docs){
+        var productChunks = [];
+        var ChunkSize = 3;
+        for (var i = 0; i < docs.length; i += ChunkSize){
+            productChunks.push(docs.slice(i, i+ChunkSize));
         }
-  
-    /*res.render('../public/views/listar.hbs', { 
-      title: 'Productos', 
-      data: dataLoaded,
-      breadcumb1:'Inicio',
-      //carrito: cartList 
-    });*/
-    res.json({
-        exito: true, 
-        librosdb
-    });
-
-    console.log(libros);
-  });
-
-//app.get('/libros/categoria/:id', (req, res) => {
-
-  /*  var id = req.params.id;
-
-    libros.find({ categoria: id})
-        .exec((err, librosdb) => {
-            if (err) {
-                res.status(400).json({
-                    exito: false,
-                    err: {
-                        message: 'No existe categoria' 
-                    }
-                });
-            }
-
-          /* res.json({
-                exito: true, 
-                librosdb
-            });*/
-         /* res.render('../public/views/listar.hbs', {librosdb});
-            console.log(librosdb);
-        }); */
-         
+        res.render('../public/views/listar.hbs', { 
+            title: 'Productos', 
+            producto: docs,
+            estatus: req.cookies.auth 
+          });
+    }).lean()
+ 
 }); 
-
 
 app.get('/libros/as',  (req, res) => {
     //variable global
@@ -169,5 +126,44 @@ app.get('/libros/as',  (req, res) => {
 
    
 });
+
+app.get('/lok', async (req, res)=>{
+    var id = req.params.id;
+    libros.find( function(err, docs){
+        var productChunks = [];
+        var ChunkSize = 3;
+        for (var i = 0; i < docs.length; i += ChunkSize){
+            productChunks.push(docs.slice(i, i+ChunkSize));
+        }
+        res.render('../public/views/', { 
+            title: 'Lebelbook', 
+            libros: docs
+          });
+    }).lean()
+    //const dataLoaded = await libros.find({});
+
+   /* res.render('../public/views/', { 
+      title: 'Productos', 
+      dataLoaded: dataLoaded,
+
+      //carrito: cartList
+    });*/
+
+    console.log(producto);
+  });
+
+
+app.get('/PL/**', async (req, res)=>{
+    const dataLoaded = await libros.find({});
+
+    res.render('../public/views/', { 
+      title: 'Productos', 
+      dataLoaded: dataLoaded,
+
+      //carrito: cartList
+    });
+
+    console.log(dataLoaded);
+  });
 
 module.exports = app;  

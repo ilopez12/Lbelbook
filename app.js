@@ -1,6 +1,7 @@
 require('dotenv').config()
 const express = require('express');
 const body_parse = require('body-parser');
+var cookieParser = require('cookie-parser')
 var hbs = require('express-hbs');
 const mongoose = require('mongoose');
 const connectDb = require('./dbConfig');
@@ -14,6 +15,7 @@ var path = require('path');
 var routes = require('./Routes/index');
 
 app.use(formData.parse())
+app.use(cookieParser())
 
 app.use(body_parse.urlencoded({ extended: false }));
 app.use(body_parse.json({ limit: '50mb' }));

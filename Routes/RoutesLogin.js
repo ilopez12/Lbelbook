@@ -50,13 +50,9 @@ app.post('/logins', (req, res) => {
                            let token = jwt.sign({
                                usuario: usuarioDB
                            }, 'secret', {expiresIn: process.env.CADUCIDAD_TOKEN} );
-                           res.json({
-                                exito: true,
-                                usuario: usuarioDB,
-                               token
-                            });
-                           
-                            console.log(usuarios+''+token);
+                           res.cookie("auth",token)
+                           res.render('../public/views/', { title: 'LEBLBOOK ', estatus: token});
+
                         }
                     }  
                 }
@@ -65,6 +61,4 @@ app.post('/logins', (req, res) => {
     }
 });
 
-
-
-module.exports = app;
+module.exports = app;   

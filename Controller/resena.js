@@ -4,8 +4,8 @@ const configS3 = require("../config/s3");
 const Resena = require('../Models/resena')
 
 async function saveResena(req, res) {
-   const s3Client = configS3.s3Client;
-  const params = configS3.uploadParams;
+    const s3Client = configS3.s3Client;
+    const params = configS3.uploadParams;
     const fileContent = await fs.readFileSync(req.files.imagen.path);
     var location_aws = ""
     params.Key = await req.files.imagen.originalFilename;
@@ -23,8 +23,7 @@ async function saveResena(req, res) {
                 id_libro: req.body.id_libro,
                 autor: req.body.autor,
                 resena: req.body.resena,
-                imagen:location_aws,
-               // imagen: req.body.imagen,
+                imagen: location_aws,
             })
 
         resena.save((err, resenaStored) => {
@@ -42,7 +41,7 @@ function getResena(req, res) {
         if (err) return res.status(500).send({ message: `Error making the request: ${err}` })
         if (!resenas) return res.status(404).send({ message: `No existe Resenas` })
         res.status(200).send({ resenas });
-    }).populate('id_libro')
+    }).populate('id_libro').lean()
 }
 
 function getResenaByLibro(req, res) {

@@ -1,13 +1,58 @@
-{{>head}}
+{{> head }}
 <body>
-        <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
-            <input type="hidden" name="cmd" value="_xclick">
-            <input type="hidden" name="business" value="openalfa-facilitator@openalfa.com">
-            <input type="hidden" name="item_name" value="Premium Subscription">
+    
+    {{> header }}
+
+	<div class="checkout">
+	<div class="container">
+	<h3>Cantidad de productos: <span>{{tamano}}</span></h3>
+
+		<div class="checkout-right">
+		<table class="timetable_sub">
+		<thead>
+		  <tr>
+			<th>N. Producto</th>	
+			<th>Nombre</th>
+			<th>Autor</th>
+			<th>Precio</th>
+			<th>Añadir</th>
+	          </tr>
+		</thead>
+                 {{#each producto}}
+		   <tr class="rem1">
+			<td class="invert-image"><img src="{{this.img_libro}}" alt=" " class="img-responsive  imgh" /></td>
+            <td class="invert">{{this.nombre_libro}}</td>
+			<td class="invert">{{this.autor_libro}}</td>
+			<td class="invert" id="precio">{{this.precio_libro}}</td>
+			
+			<td class="invert">
+			<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
+            <input type="hidden" name="cmd" value="_s-xclick">
+			<input type="hidden" name="hosted_button_id" value="XB5AT44P2B7M2">
+            <input type="hidden" name="business" value="vendedor@lbebook.com">
+            <input type="hidden" name="handling" value="4">
+			<input type="hidden" name="item_name" value="Compra de Libro {{this.nombre_libro}}">
             <input type="hidden" name="currency_code" value="USD">
-            <input type="hidden" name="amount" value="20.00">
+            <input type="hidden" name="amount" value="{{this.precio_libro}}">
             <input type="image" src="http://www.paypal.com/es_XC/i/btn/x-click-but01.gif"
                    name="submit"
                    alt="Make payments with PayPal - it's fast, free and secure!">
         </form>
+		</td>
+			</tr>
+                          
+			{{/each}}	
+			
+		<!--	<tr>
+				<td class="invert"></td>
+				<td class="invert"></td>
+				<td class="invert"></td>
+				<td class="invert">Total</td>
+				<td class="invert">{{suma}}</td>
+			</tr>	quantity-->
+			</table>
+			</div>
+		</div>
+	</div>
+			
 {{>footer}}

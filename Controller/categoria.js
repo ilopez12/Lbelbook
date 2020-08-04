@@ -37,7 +37,12 @@ function getCategories(req, res) {
                 .send({ message: `Error making the request: ${err}` });
         if (!categories)
             return res.status(404).send({ message: `No existe categorias` });
-        res.status(200).send({ categories });
+        res.status(200).render('../public/views/categorias.hbs', { 
+            title: 'Categorias ', 
+            estatus: req.cookies.auth,
+            Categoria : Categoria
+            
+         });
     });
 }
 

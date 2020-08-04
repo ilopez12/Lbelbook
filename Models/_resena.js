@@ -17,10 +17,10 @@ const ResenaSchema = new Schema({
         type: String,
         require: [true, 'Reseña necesaria']
     },
-    img: {
+   /* img: {
         type: String,
         require: [true, 'Imagen obligatoria']
-    },
+    },*/
     
 });
 

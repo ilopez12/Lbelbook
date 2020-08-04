@@ -2,73 +2,66 @@
 <body>
     
     {{> header }}
-        
+            
     <div class="main-cat">
   <!--  <div class="categorias">-->
-        <div class="main-container"><!--INSERAR IMAGENES DE LA BASE DE DATOS-->
-            <div class="mc-1">    
+        
+        <div class="row">
+                <div class="col-md-4">
+                    <div class="info-icon">
+                        <div class="icon text-danger">
+                            <i class="pe-7s-graph1"></i>
+                        </div>
+                        <a href="/libros/categoria/5f27920f3d27f557ae2b741c">Romance</a>
+                       <a href="/libros/categoria/5f27920f3d27f557ae2b741c"><img class= "nuevogen" src="/public/img/icons/romance.png" alt=""></a> 
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="info-icon">
+                        <div class="icon text-danger">
+                            <i class="pe-7s-note2"></i>
+                        </div>
+                        <a href="/libros/categoria/5f2792683d27f557ae2b741f">Ciencia Ficción</a>
+                        <a href="/libros/categoria/5f2792683d27f557ae2b741f"><img class= "nuevogen imgcat"  src="/public/img/icons/cficcion.png" alt=""></a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="info-icon">
+                        <div class="icon text-danger">
+                            <i class="pe-7s-music"></i>
+                        </div>
+                        <a href="/libros/categoria/5f27923d3d27f557ae2b741d">Drama</a>
+                        <a href="/libros/categoria/5f27923d3d27f557ae2b741d"><img class= "nuevogen" src="/public/img/icons/drama.png" alt=""></a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="info-icon">
+                        <div class="icon text-danger">
+                            <i class="pe-7s-graph1"></i>
+                        </div>
+                          <a href="/libros/categoria/5f2792873d27f557ae2b7420">Biografía</a>
+                          <a href="/libros/categoria/5f2792873d27f557ae2b7420"><img class= "nuevogen" src="/public/img/icons/biografia.png" alt=""></a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="info-icon">
+                        <div class="icon text-danger">
+                            <i class="pe-7s-note2"></i>
+                        </div>
+                        <a href="/libros/categoria/5f2793373d27f557ae2b7421">TERROR</a>
+                        <a href="/libros/categoria/5f2793373d27f557ae2b7421"><img class= "nuevogen"  src="/public/img/icons/terror.png" alt=""></a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="info-icon">
+                        <div class="icon text-danger">
+                            <i class="pe-7s-music"></i>
+                        </div>
+                        <a href="/libros/categoria/5f2792523d27f557ae2b741e">SUSPENSO</a>
+                        <a href="/libros/categoria/5f2792523d27f557ae2b741e"> <img class= "nuevogen" src="/public/img/icons/Suspenso.png" alt=""></a>
+                    </div>
+                </div>
             </div>
-            <div class="mc-2">
-              <img class= "nuevo" src="/public/img/icons/romance.png" alt="">
 
-                <form class="form-horizontal" method="get" action="/libros/categoria/Romance">
-                  <input type="hidden" id="categoria" class="fadeIn second" name="categoria" value="Romance">
-                  <input type="submit" class="fadeIn fourth" value="Romance">
-                </form>   
-
-            </div>
-
-            <div class="mc-3">
-              <img class= "nuevo"  src="/public/img/icons/cficcion.png" alt="">
-                 <form class="form-horizontal" method="get" action="/libros/categoria/Cficcion">
-                  <input type="hidden" id="categoria" class="fadeIn second" name="categoria" value="cficcion">
-                  <input type="submit" class="fadeIn fourth" value="Ciencia Ficción">
-                </form>  
-            </div>
-
-            <div class="mc-4">
-               <img class= "nuevo" src="/public/img/icons/drama.png" alt="">
-                <form class="form-horizontal" method="get" action="/libros/categoria/Drama">
-                  <input type="hidden" id="categoria" class="fadeIn second" name="categoria" value="drama">
-                  <input type="submit" class="fadeIn fourth" value="Drama">
-                </form>  
-                   
-            </div>
-
-            <div class="mc-2">
-               <img class= "nuevo" src="/public/img/icons/biografia.png" alt="">
-                <form class="form-horizontal" method="get" action="/libros/categoria/Biografia">
-                  <input type="hidden" id="categoria" class="fadeIn second" name="categoria" value="biografia">
-                  <input type="submit" class="fadeIn fourth" value="Biografía">
-                </form>  
-   
-            </div>
-            <div class="mc-3">
-                <img class= "nuevo"  src="/public/img/icons/negocios.png" alt="">
-                 <form class="form-horizontal" method="get" action="/libros/categoria/Negocios">
-                  <input type="hidden" id="categoria" class="fadeIn second" name="categoria" value="Negocios">
-                  <input type="submit" class="fadeIn fourth" value="Negocios">
-                </form>    
-            </div>
-            <div class="mc-4">
-                <img class= "nuevo" src="/public/img/icons/Suspenso.png" alt="">
-                 <form class="form-horizontal" method="get" action="/libros/categoria/Suspenso">
-                  <input type="hidden" id="categoria" class="fadeIn second" name="categoria" value="suspenso">
-                  <input type="submit" class="fadeIn fourth" value="Suspenso">
-                </form>  
-            </div>
-            <div class="mc-5"></div>
-            </div>
-
-        <!--<div class="cat1"><a href=""> Romance</a></div>
-        <div class="cat2"><a href="">Ciencia Ficcion</a></div>
-        <div class="cat3"><a href="">Biografias</a></div>
-        <div class="cat4"><a href="">Suspenso</a></div>
-        <div class="cat5"><a href="">Drama</a></div>
-        <div class="cat6"><a href="">Auto Ayuda</a></div>
-        <div class="cat7"><a href="">Negocios</a></div>
-        <div class="cat8"><a href="">Progrmación</a></div>
-
-    </div>-->
     </div>
 {{> footer }}

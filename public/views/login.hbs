@@ -9,11 +9,8 @@
 <a href="/register"> <h2 class="log">Registro</h2></a> 
 {{>log-reg}}
     <!-- Login Form -->
-    <form class="form-horizontal" method="post" action="/logins">
-      <input type="text" id="login" class="fadeIn second" name="user_log" placeholder="Correo">
-      <input type="password" id="password" class="fadeIn third" name="pass_l" placeholder="Password">
-      <input type="submit" class="fadeIn fourth" value="Log In">
-    </form>
+    {{>log}}
+
 
     <!-- Remind Passowrd 
     <div id="formFooter">
