@@ -7,6 +7,7 @@ var login_ruta = require('./RoutesLogin');
 var carrito_ruta = require('./RouteCarrito');
 var pago_ruta = require('./RoutePago');
 var resena_ruta = require('./Routeresena'); 
+var paypal = require('./paypal'); 
 
 const customerCtrl = require('../Controller/customer')
 const categoriatCtrl = require('../Controller/categoria')
@@ -34,7 +35,7 @@ app.get('/libro/', librotCtrl.getLibros)
 app.get('/libro/id/:libro_id',librotCtrl.getLibroByID)
 app.get('/libro/categoria/:categoria_id',librotCtrl.getLibroByCategoria)
 app.post('/libro/', librotCtrl.saveLibro)
-// SERVICES RESENA
+// SERVICES RESENA 
 app.get('/resena/', resenaCtrl.getResena)
 app.get('/resena/libro/:id_libro', resenaCtrl.getResenaByLibro)
 app.post('/resena/', resenaCtrl.saveResena)
@@ -49,5 +50,6 @@ app.use(login_ruta);
 app.use(carrito_ruta);
 app.use(pago_ruta);
 app.use(resena_ruta);
+app.use(paypal);
 
 module.exports = app;

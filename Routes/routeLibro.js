@@ -52,7 +52,7 @@ app.get('/libros/', (req, res) => {
         console.log( 'LBS');
         if (err) {
             res.json({
-                exito: false,
+                exito: false, 
                 err
             });
         }else{
